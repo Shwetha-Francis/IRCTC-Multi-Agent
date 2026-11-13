@@ -1,0 +1,6 @@
+.env
+venv/
+__pycache__/
+*.db
+chroma_db/
+data/railway_docs/train_ticket*.pdf # Personal railway tickets
