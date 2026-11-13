@@ -1,46 +1,44 @@
 # IRCTC Multi-Agent System
 
-An AI-powered railway assistance application built using **LangChain, LangGraph, Groq LLM, and Streamlit**. The project uses multiple specialized agents to handle different railway-related tasks through a single conversational interface.
+An AI-powered railway assistance application developed using Python, LangChain, LangGraph, and Groq LLM. The system uses multiple specialized AI agents to handle different railway-related tasks through a terminal-based conversational interface.
 
 ## Project Overview
 
-The IRCTC Multi-Agent System is designed to simulate a railway assistance platform where users can search for trains, collect ticket booking details, book food, manage user profiles, track trains, and ask railway-related questions.
+The IRCTC Multi-Agent System is designed to simulate a railway assistance platform where users can search for trains, collect ticket booking details, order food, manage user profiles, track trains, and ask railway-related questions.
 
-Instead of handling every request through one large program, the application uses multiple specialized agents. LangGraph manages the workflow and routes user requests to the appropriate agent.
+Instead of handling every request through one large program, the application uses six specialized agents. LangGraph manages the workflow and routes user requests to the appropriate agent.
 
-**Note:** This is an educational simulation project. Ticket booking and related transactions are not connected to the official IRCTC booking system.
+**Note:** This is an educational simulation project. Ticket booking and food ordering are not connected to the official IRCTC booking system.
 
 ## Key Features
 
-The application consists of six specialized agents:
+### 1. Train Search Agent
+- Searches for railway stations using station names or station codes.
+- Searches for trains based on journey details.
+- Handles ambiguous station selections.
 
-1. **Train Search Agent**
-   - Searches for railway stations using station names or codes.
-   - Searches for trains based on journey details.
-   - Handles ambiguous station selections.
+### 2. Ticket Booking Agent
+- Collects passenger and journey details.
+- Handles simulated ticket booking information.
+- Supports the ticket booking workflow.
 
-2. **Ticket Booking Agent**
-   - Collects passenger and journey details.
-   - Handles simulated ticket booking information.
-   - Prepares booking details for the booking workflow.
+### 3. Food Booking Agent
+- Collects food preferences and order details.
+- Supports simulated food ordering during a train journey.
 
-3. **Food Booking Agent**
-   - Collects food preferences and order details.
-   - Supports simulated food ordering during a train journey.
+### 4. Profile and Account Agent
+- Supports user registration and login.
+- Stores user account information using SQLite.
+- Maintains booking history.
 
-4. **Profile and Account Agent**
-   - Supports user registration and login.
-   - Stores user account information in SQLite.
-   - Maintains booking history.
+### 5. Railway FAQ Agent
+- Answers railway-related questions using Retrieval-Augmented Generation (RAG).
+- Retrieves relevant information from railway PDF documents.
+- Uses ChromaDB for document retrieval and Groq for response generation.
 
-5. **Railway FAQ Agent**
-   - Answers railway-related questions using Retrieval-Augmented Generation (RAG).
-   - Retrieves relevant information from railway PDF documents.
-   - Uses ChromaDB for document retrieval and Groq for response generation.
-
-6. **Live Tracking Agent**
-   - Retrieves train running information through an external railway API.
-   - Provides train tracking information when API data is available.
+### 6. Live Tracking Agent
+- Retrieves train running information through an external railway API.
+- Provides train tracking information when API data is available.
 
 ## Technologies Used
 
@@ -50,7 +48,6 @@ The application consists of six specialized agents:
 | LangChain | LLM application integration |
 | LangGraph | Multi-agent workflow orchestration |
 | Groq | Large Language Model API |
-| Streamlit | User interface |
 | ChromaDB | Vector database for RAG |
 | Sentence Transformers | Text embedding generation |
 | SQLite | User and booking data storage |
@@ -58,11 +55,21 @@ The application consists of six specialized agents:
 | Python-dotenv | Environment variable management |
 | Requests | External API communication |
 
+## Multi-Agent Architecture
+
+The application uses LangGraph to manage the conversation workflow and coordinate specialized agents.
+
+**General workflow:**
+
+User Input → Intent Detection → Agent Routing → Specialized Agent → Response to User
+
+Each agent is responsible for a specific task. This modular architecture makes the application easier to maintain and extend.
+
 ## RAG Implementation
 
 The Railway FAQ Agent uses Retrieval-Augmented Generation (RAG) to answer questions from railway documents.
 
-The workflow:
+### RAG Workflow
 
 1. Railway PDF documents are loaded.
 2. Document content is extracted and divided into smaller chunks.
@@ -71,17 +78,7 @@ The workflow:
 5. When a user asks a question, the system retrieves relevant document chunks.
 6. The retrieved information is passed to the Groq LLM to generate an answer.
 
-This helps the application answer railway questions using the provided reference documents rather than relying only on the LLM's general knowledge.
-
-## Multi-Agent Architecture
-
-The application uses LangGraph to manage the conversation workflow.
-
-The general workflow is:
-
-User Input → Intent Detection → Agent Routing → Specialized Agent → Response to User
-
-Each agent is responsible for a specific task. This modular architecture makes the application easier to maintain and extend.
+This allows the application to answer railway questions using the provided reference documents.
 
 ## Project Structure
 
@@ -156,13 +153,15 @@ GROQ_API_KEY=your_groq_api_key
 RAILRADAR_API_KEY=your_railradar_api_key
 ```
 
-Use the actual variable names expected by the project code. Never upload your real API keys to GitHub.
+Use the exact variable names expected by the project code. Never upload your actual API keys to GitHub.
 
 ### 7. Run the application
 
 ```bash
-streamlit run app.py
+python app.py
 ```
+
+The application runs through the terminal.
 
 ## Important Notes
 
@@ -170,7 +169,7 @@ streamlit run app.py
 - Ticket and food booking workflows are simulated.
 - Live train tracking depends on external API availability and valid API credentials.
 - Railway FAQ responses depend on the available reference documents.
-- The SQLite database and personal railway tickets are not included in the public repository.
+- The SQLite database and personal railway tickets are not included in the repository.
 
 ## Future Improvements
 
@@ -184,6 +183,6 @@ streamlit run app.py
 
 **Shwetha Francis**
 
-B.Tech – Artificial Intelligence and Data Science
+Agentic AI Intern
 
 GitHub: [Shwetha-Francis](https://github.com/Shwetha-Francis)
