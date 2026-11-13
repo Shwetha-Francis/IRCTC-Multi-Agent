@@ -1,6 +1,26 @@
+
+# API secrets
 .env
+.env.*
+
+# Python environment
 venv/
+.venv/
 __pycache__/
+*.py[cod]
+
+# Databases
 *.db
+*.sqlite
+*.sqlite3
+
+# Vector database
 chroma_db/
-data/railway_docs/train_ticket*.pdf # Personal railway tickets
+
+# Personal railway tickets
+data/railway_docs/train_ticket*.pdf
+
+# Temporary files
+*.log
+*.tmp
+*.bak
